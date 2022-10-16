@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  bot:
+    container_name: verifier-bot
+    image: verifier-bot
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - "./.env:/app/.env"
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.docker/config.json:/config.json

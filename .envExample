@@ -1,3 +1,4 @@
+BASE_URL=http://localhost:3000/
 PK=yourprivatekey
 GATEWAY_GOERLI_WS=wss://goerli.infura.io/
 ACCOUNT_ADDRESS=0xc905803BbC804fECDc36850281fEd6520A346AC5

@@ -84,6 +84,7 @@ func main() {
 	loadEnv()
 	ctx := context.Background()
 	pk := myenv["PK"] // load private key from env
+	baseURL = myenv["BASE_URL"]
 
 	msgTemplates["hello"] = "Hey, this bot is attaching personal wallets to telegram user & collective wallets to chat id"
 	msgTemplates["case0"] = "Go to link and attach your tg_id to your metamask wallet"
