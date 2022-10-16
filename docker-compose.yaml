@@ -10,7 +10,7 @@ services:
 
   watchtower:
     image: containrrr/watchtower
-    command: --interval 300
+    command: --interval 300 --include-stopped --include-restarting
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ~/.docker/config.json:/config.json
