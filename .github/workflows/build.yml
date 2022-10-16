@@ -32,5 +32,5 @@ jobs:
           tags: |
             verifier-bot:latest
             verifier-bot:1.0.0
-            ghcr.io/Terisback/verifier-bot:latest
-            ghcr.io/Terisback/verifier-bot:1.0.0
+            ghcr.io/terisback/verifier-bot:latest
+            ghcr.io/terisback/verifier-bot:1.0.0
