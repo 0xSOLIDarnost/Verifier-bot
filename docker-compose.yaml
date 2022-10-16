@@ -2,13 +2,15 @@ version: "3.9"
 
 services:
   bot:
-    image: ghcr.io/Terisback/verifier-bot:latest
+    container_name: verifier-bot
+    image: ghcr.io/terisback/verifier-bot:master
     restart: always
     volumes:
-      - "./.env:/app/.env"
+      - ".env:/app/.env"
 
   watchtower:
     image: containrrr/watchtower
+    command: --interval 300
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ~/.docker/config.json:/config.json
