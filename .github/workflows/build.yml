@@ -5,6 +5,10 @@ on:
     branches:
       - 'master'
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -19,18 +23,21 @@ jobs:
         name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
-          registry: ghcr.io
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - 
+        name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       -
         name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: .
-          platforms: linux/amd64,linux/arm64
           push: true
-          tags: |
-            verifier-bot:latest
-            verifier-bot:1.0.0
-            ghcr.io/terisback/verifier-bot:latest
-            ghcr.io/terisback/verifier-bot:1.0.0
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
