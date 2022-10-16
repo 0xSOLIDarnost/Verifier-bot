@@ -45,11 +45,11 @@ var mainKeyboard = tgbotapi.NewReplyKeyboard(
 		tgbotapi.NewKeyboardButton("Verify personal wallet")),
 )
 
-//to operate the bot, put a text file containing key for your bot acquired from telegram "botfather" to the same directory with this file
+// to operate the bot, put a text file containing key for your bot acquired from telegram "botfather" to the same directory with this file
 var tgApiKey, err = os.ReadFile(".secret")
 var bot, error1 = tgbotapi.NewBotAPI(string(tgApiKey))
 
-//type containing all the info about user input
+// type containing all the info about user input
 type user struct {
 	tgid          int64
 	tg_username   string
@@ -65,7 +65,7 @@ type event_bc = *passport.PassportPassportApplied
 var ch = make(chan *passport.PassportPassportApplied)
 var ch_index = make(chan *passport.PassportPassportAppliedIndexed)
 
-//main database for dialogs, key (int64) is telegram user id
+// main database for dialogs, key (int64) is telegram user id
 var userDatabase = make(map[int64]user) // consider to change in persistend data storage?
 
 var msgTemplates = make(map[string]string)
