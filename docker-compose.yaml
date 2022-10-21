@@ -3,7 +3,7 @@ version: "3.9"
 services:
   bot:
     container_name: verifier-bot
-    image: ghcr.io/terisback/verifier-bot:master
+    image: ghcr.io/0xsolidarnost/verifier-bot:master
     restart: always
     volumes:
       - ".env:/app/.env"
